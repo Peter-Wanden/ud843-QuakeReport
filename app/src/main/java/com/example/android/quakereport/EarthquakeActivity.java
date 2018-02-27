@@ -27,6 +27,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -169,6 +170,8 @@ public class EarthquakeActivity extends AppCompatActivity
         uriBuilder.appendQueryParameter("minmag", minMagnitude);
         uriBuilder.appendQueryParameter("orderby", orderBy);
 
+        Log.i(LOG_TAG, "URL is: " + uriBuilder.toString());
+
         return new EarthquakeLoader(this, uriBuilder.toString());
     }
 
@@ -188,7 +191,7 @@ public class EarthquakeActivity extends AppCompatActivity
         // data set. This will trigger the ListView to update.
         if (earthquakes != null && !earthquakes.isEmpty()) {
             //mAdapter.addAll(earthquakes);
-            updateUi(earthquakes);
+            mAdapter.addAll(earthquakes);
         }
     }
 
